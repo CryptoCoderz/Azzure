@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Azzure
+Comment=Azzure P2P Cryptocurrency
+Comment[fr]=Azzure, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Azzure, eşten eşe kriptografik sanal para birimi
+Exec=Azzure-qt %u
+Terminal=false
+Type=Application
+Icon=Azzure128
+MimeType=x-scheme-handler/Azzure;
+Categories=Office;Finance;

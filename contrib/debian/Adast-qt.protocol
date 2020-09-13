@@ -1,0 +1,11 @@
+[Protocol]
+exec=Azzure-qt '%u'
+protocol=Azzure
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false
