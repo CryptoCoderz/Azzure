@@ -470,7 +470,7 @@ void BlockExplorer::showEvent(QShowEvent*)
         updateNavButtons();
 
         if (!GetBoolArg("-txindex", false)) {
-            QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (azzure.conf).");
+            QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (Azzure.conf).");
             QMessageBox::warning(this, "AZZURE Core Blockchain Explorer", Warning, QMessageBox::Ok);
         }
     }

@@ -9,7 +9,7 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between azzure-cli and azzured)
+ * CBaseChainParams defines the base parameters (shared between Azzure-cli and Azzured)
  * of a given instance of the Pivx system.
  */
 class CBaseChainParams

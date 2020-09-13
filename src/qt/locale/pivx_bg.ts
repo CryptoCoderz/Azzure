@@ -480,6 +480,6 @@
     </message>
     </context>
 <context>
-    <name>azzure-core</name>
+    <name>Azzure-core</name>
     </context>
 </TS>

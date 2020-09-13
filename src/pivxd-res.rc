@@ -17,13 +17,13 @@ BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
             VALUE "CompanyName",        "AZZURE"
-            VALUE "FileDescription",    "azzured (OSS daemon/client for Pivx)"
+            VALUE "FileDescription",    "Azzured (OSS daemon/client for Pivx)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "azzured"
+            VALUE "InternalName",       "Azzured"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "azzured.exe"
-            VALUE "ProductName",        "azzured"
+            VALUE "OriginalFilename",   "Azzured.exe"
+            VALUE "ProductName",        "Azzured"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

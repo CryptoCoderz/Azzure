@@ -2284,7 +2284,7 @@ static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck()
 {
-    RenameThread("azzure-scriptch");
+    RenameThread("Azzure-scriptch");
     scriptcheckqueue.Thread();
 }
 

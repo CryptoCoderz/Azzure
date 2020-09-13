@@ -300,15 +300,15 @@ static const CRPCCommand vRPCCommands[] =
         {"hidden", "setmocktime", &setmocktime, true, false, false},
 
         /* Pivx features */
-        {"azzure", "masternode", &masternode, true, true, false},
-        {"azzure", "masternodelist", &masternodelist, true, true, false},
-        {"azzure", "mnbudget", &mnbudget, true, true, false},
-        {"azzure", "mnbudgetvoteraw", &mnbudgetvoteraw, true, true, false},
-        {"azzure", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        {"azzure", "mnsync", &mnsync, true, true, false},
-        {"azzure", "spork", &spork, true, true, false},
+        {"Azzure", "masternode", &masternode, true, true, false},
+        {"Azzure", "masternodelist", &masternodelist, true, true, false},
+        {"Azzure", "mnbudget", &mnbudget, true, true, false},
+        {"Azzure", "mnbudgetvoteraw", &mnbudgetvoteraw, true, true, false},
+        {"Azzure", "mnfinalbudget", &mnfinalbudget, true, true, false},
+        {"Azzure", "mnsync", &mnsync, true, true, false},
+        {"Azzure", "spork", &spork, true, true, false},
 #ifdef ENABLE_WALLET
-        {"azzure", "obfuscation", &obfuscation, false, false, true}, /* not threadSafe because of SendMoney */
+        {"Azzure", "obfuscation", &obfuscation, false, false, true}, /* not threadSafe because of SendMoney */
 
         /* Wallet */
         {"wallet", "addmultisigaddress", &addmultisigaddress, true, false, true},
@@ -573,10 +573,10 @@ void StartRPCThreads()
         unsigned char rand_pwd[32];
         GetRandBytes(rand_pwd, 32);
         uiInterface.ThreadSafeMessageBox(strprintf(
-                                             _("To use azzured, or the -server option to azzure-qt, you must set an rpcpassword in the configuration file:\n"
+                                             _("To use Azzured, or the -server option to Azzure-qt, you must set an rpcpassword in the configuration file:\n"
                                                "%s\n"
                                                "It is recommended you use the following random password:\n"
-                                               "rpcuser=azzurerpc\n"
+                                               "rpcuser=Azzurerpc\n"
                                                "rpcpassword=%s\n"
                                                "(you do not need to remember this password)\n"
                                                "The username and password MUST NOT be the same.\n"
@@ -1033,7 +1033,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(string methodname, string args)
 {
-    return "> azzure-cli " + methodname + " " + args + "\n";
+    return "> Azzure-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args)

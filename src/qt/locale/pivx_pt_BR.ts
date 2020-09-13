@@ -594,8 +594,8 @@
         <translation>Enviar moedas para um endereço AZZURE</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and azzure: URIs)</source>
-        <translation>Requisitar pagamentos (gera códigos QR e azzure: URIs)</translation>
+        <source>Request payments (generates QR codes and Azzure: URIs)</source>
+        <translation>Requisitar pagamentos (gera códigos QR e Azzure: URIs)</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -806,8 +806,8 @@ MultiSend: %1</translation>
         <translation>Rótulo</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (azzure.conf).</source>
-        <translation>Nem todas as transações serão exibidas. Para visualizar todas as transações você precisa definir txindex=1 no arquivo de configuração (azzure.conf). </translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (Azzure.conf).</source>
+        <translation>Nem todas as transações serão exibidas. Para visualizar todas as transações você precisa definir txindex=1 no arquivo de configuração (Azzure.conf). </translation>
     </message>
 </context>
 <context>
@@ -1611,9 +1611,9 @@ Favor verificar o endereço e tente novamente.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/azzure-project/azzure-project-translations</source>
+https://www.transifex.com/Azzure-project/Azzure-project-translations</source>
         <translation>Linguagem não encontrada ou tradução incompleta? Ajude contribuido com traduções aqui:
-https://www.transifex.com/azzure-project/azzure-project-translations</translation>
+https://www.transifex.com/Azzure-project/Azzure-project-translations</translation>
     </message>
     <message>
         <source>Connect to the AZZURE network through a SOCKS5 proxy.</source>
@@ -3452,7 +3452,7 @@ https://www.transifex.com/azzure-project/azzure-project-translations</translatio
     </message>
 </context>
 <context>
-    <name>azzure-core</name>
+    <name>Azzure-core</name>
     <message>
         <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
         <translation>Deletar todas as transações da carteira e somente recuperar aquelas partes da blockchain através de -rescan na inicialização</translation>

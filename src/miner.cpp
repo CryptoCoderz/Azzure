@@ -444,7 +444,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
 {
     LogPrintf("AZZUREMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("azzure-miner");
+    RenameThread("Azzure-miner");
 
     // Each thread has its own key and counter
     CReserveKey reservekey(pwallet);

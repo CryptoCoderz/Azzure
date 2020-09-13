@@ -49,7 +49,7 @@ static const int MAX_URI_LENGTH = 255;
 #define SPINNER_FRAMES 35
 
 #define QAPP_ORG_NAME "AZZURE"
-#define QAPP_ORG_DOMAIN "azzure.org"
+#define QAPP_ORG_DOMAIN "Azzure.org"
 #define QAPP_APP_NAME_DEFAULT "AZZURE-Qt"
 #define QAPP_APP_NAME_TESTNET "AZZURE-Qt-testnet"
 

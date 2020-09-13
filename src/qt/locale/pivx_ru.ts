@@ -602,7 +602,7 @@
         <translation>Отправить монеты на AZZURE адрес</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and azzure: URIs)</source>
+        <source>Request payments (generates QR codes and Azzure: URIs)</source>
         <translation>Запросить платежи (генерирует QR-код и AZZURE: URI)</translation>
     </message>
     <message>
@@ -829,8 +829,8 @@ MultiSend: %1</translation>
         <translation>Текстовая метка</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (azzure.conf).</source>
-        <translation>Будут показаны не все транзакции. Для отображения всех транзакций необходимо выставить txindex=1 в конфигурационном файле (azzure.conf).</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (Azzure.conf).</source>
+        <translation>Будут показаны не все транзакции. Для отображения всех транзакций необходимо выставить txindex=1 в конфигурационном файле (Azzure.conf).</translation>
     </message>
 </context>
 <context>
@@ -1711,9 +1711,9 @@ Please check the address and try again.</source>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/azzure-project/azzure-project-translations</source>
+https://www.transifex.com/Azzure-project/Azzure-project-translations</source>
         <translation>Отсутствует ваш язык или заметили незавершенный перевод? Вы можете помочь нам стать лучше:
-https://www.transifex.com/azzure-project/azzure-project-translations</translation>
+https://www.transifex.com/Azzure-project/Azzure-project-translations</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -2072,8 +2072,8 @@ https://www.transifex.com/azzure-project/azzure-project-translations</translatio
         <translation>Неверный адрес оплаты %1</translation>
     </message>
     <message>
-        <source>Cannot start azzure: click-to-pay handler</source>
-        <translation>Не удалось запустить azzure: обработчик click-to-pay </translation>
+        <source>Cannot start Azzure: click-to-pay handler</source>
+        <translation>Не удалось запустить Azzure: обработчик click-to-pay </translation>
     </message>
     <message>
         <source>URI cannot be parsed! This can be caused by an invalid AZZURE address or malformed URI parameters.</source>
@@ -3173,7 +3173,7 @@ https://www.transifex.com/azzure-project/azzure-project-translations</translatio
     </message>
     </context>
 <context>
-    <name>azzure-core</name>
+    <name>Azzure-core</name>
     <message>
         <source>SwiftTX requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
         <translation>Для SwiftTX требуется как минимум 6 подтверждений, Вам нужно подождать несколько минут и попытаться снова.</translation>

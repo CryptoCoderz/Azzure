@@ -64,15 +64,15 @@ bin_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += azzured
+  bin_PROGRAMS += Azzured
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += azzure-cli azzure-tx
+  bin_PROGRAMS += Azzure-cli Azzure-tx
 endif
 
 .PHONY: FORCE
-# azzure core #
+# Azzure core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrman.h \
@@ -180,7 +180,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between azzured and azzure-qt
+# server: shared between Azzured and Azzure-qt
 libbitcoin_server_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS)
 libbitcoin_server_a_SOURCES = \
   addrman.cpp \
@@ -224,7 +224,7 @@ libbitcoin_zmq_a_SOURCES = \
   zmq/zmqpublishnotifier.cpp
 endif
 
-# wallet: shared between azzured and azzure-qt, but only linked
+# wallet: shared between Azzured and Azzure-qt, but only linked
 # when wallet enabled
 
 libbitcoin_wallet_a_CFLAGS = -fPIC
@@ -295,7 +295,7 @@ univalue_libbitcoin_univalue_a_SOURCES = \
   univalue/univalue_escapes.h \
   univalue/univalue.h
 
-# common: shared between azzured, and azzure-qt and non-server tools
+# common: shared between Azzured, and Azzure-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_common_a_SOURCES = \
   allocators.cpp \
@@ -351,7 +351,7 @@ libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 libbitcoin_util_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
-# cli: shared between azzure-cli and azzure-qt
+# cli: shared between Azzure-cli and Azzure-qt
 libbitcoin_cli_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_SOURCES = \
   rpcclient.cpp \
@@ -361,7 +361,7 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-azzured_LDADD = \
+Azzured_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UNIVALUE) \
@@ -372,40 +372,40 @@ azzured_LDADD = \
   $(LIBSECP256K1)
 
 if ENABLE_ZMQ
-azzured_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+Azzured_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
 
 if ENABLE_WALLET
-azzured_LDADD += libbitcoin_wallet.a
+Azzured_LDADD += libbitcoin_wallet.a
 endif
-azzured_SOURCES = azzured.cpp
+Azzured_SOURCES = Azzured.cpp
 #
 
 if TARGET_WINDOWS
-azzured_SOURCES += azzured-res.rc
+Azzured_SOURCES += Azzured-res.rc
 endif
 
-azzured_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
-azzured_CPPFLAGS = $(BITCOIN_INCLUDES)
-azzured_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+Azzured_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+Azzured_CPPFLAGS = $(BITCOIN_INCLUDES)
+Azzured_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 
-# azzure-cli binary #
-azzure_cli_LDADD = \
+# Azzure-cli binary #
+Azzure_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBBITCOIN_UTIL) \
   $(BOOST_LIBS) \
   $(SSL_LIBS) \
   $(CRYPTO_LIBS)
 
-azzure_cli_SOURCES = \
-  azzure-cli.cpp
+Azzure_cli_SOURCES = \
+  Azzure-cli.cpp
 
-azzure_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
+Azzure_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
 
-# azzure-tx binary #
-azzure_tx_LDADD = \
+# Azzure-tx binary #
+Azzure_tx_LDADD = \
   $(LIBBITCOIN_UNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -414,15 +414,15 @@ azzure_tx_LDADD = \
   $(BOOST_LIBS) \
   $(CRYPTO_LIBS)
 
-azzure_tx_SOURCES = azzure-tx.cpp
-azzure_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
+Azzure_tx_SOURCES = Azzure-tx.cpp
+Azzure_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
-azzure_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+Azzure_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-azzure_cli_SOURCES += azzure-cli-res.rc
+Azzure_cli_SOURCES += Azzure-cli-res.rc
 endif
-azzure_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+Azzure_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if BUILD_BITCOIN_LIBS
 include_HEADERS = script/bitcoinconsensus.h

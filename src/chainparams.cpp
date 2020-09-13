@@ -1,7 +1,9 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The AZZURE developers
+// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2018 LightPayCoin developers
+// Copyright (c) 2019 The Azzure developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -52,18 +54,23 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 //    timestamp before)
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
-    boost::assign::map_list_of(0, uint256("0x00000cba66e0a88c15a898836eb6e835c4ec96b28e7c94e6b4574c451f453b6b"));
+    boost::assign::map_list_of
+        (0, uint256("0x00000cba66e0a88c15a898836eb6e835c4ec96b28e7c94e6b4574c451f453b6b"));
+
+
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
     1588351439, // * UNIX timestamp of last checkpoint block
-    0,    // * total number of transactions between genesis and last checkpoint
+    0,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
-    boost::assign::map_list_of(0, uint256("0x001"));
+    boost::assign::map_list_of
+        (0, uint256("0"));
+
 static const Checkpoints::CCheckpointData dataTestnet = {
     &mapCheckpointsTestnet,
     1553555506,
@@ -85,29 +92,25 @@ public:
     {
         networkID = CBaseChainParams::MAIN;
         strNetworkID = "main";
-        /**
-         * The message start string is designed to be unlikely to occur in normal data.
-         * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
-         * a large 4-byte int at any alignment.
-         */
         pchMessageStart[0] = 0xf3;
         pchMessageStart[1] = 0xde;
         pchMessageStart[2] = 0x01;
         pchMessageStart[3] = 0xd6;
         vAlertPubKey = ParseHex("0438d21f5d5e1677c2805e2b623faf4c530214efeaafec04802aafe1895936a12741794eeb06d964196ab84bac40b7885b7b2c1b5824fb157591a84b13835d23ad");
         nDefaultPort = 11115;
-        bnProofOfWorkLimit = ~uint256(0) >> 20; // AZZURE starting difficulty is 1 / 2^12
+        bnProofOfWorkLimit = ~uint256(0) >> 20; // Azzure starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 9999999;
         nMaxReorganizationDepth = 100;
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // AZZURE: 1 day
-        nTargetSpacing = 1 * 60;  // AZZURE: 1 minute
-        nLastPOWBlock = 259200;
-        nMaturity = 100;
+        nTargetTimespan = 1 * 60;
+        nTargetSpacing = 1 * 60;
+        nLastPOWBlock = 200;
+        nMaturity = 20;
         nMasternodeCountDrift = 20;
+        nMasternodeCollateralLimit = 500000;
         nModifierUpdateBlock = 106000;
         nMaxMoneyOut = 5000000000 * COIN;
         const char* pszTimestamp = "Spains deficit will reach 126 billion - CNN";
@@ -129,23 +132,24 @@ public:
         assert(hashGenesisBlock == uint256("0x00000cba66e0a88c15a898836eb6e835c4ec96b28e7c94e6b4574c451f453b6b"));
         assert(genesis.hashMerkleRoot == uint256("0xd5696584b38a036442ffd8c480c225e4af6d50c8e359464aa07bc21751ca6ad7"));
 
+        vSeeds.push_back(CDNSSeedData("1", "66.42.117.99"));
+
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 23); // A
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 73); // W
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 128);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x21)(0x31)(0x2B).convert_to_container<std::vector<unsigned char> >();
-            //  BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x77).convert_to_container<std::vector<unsigned char> >();
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
         fRequireRPCPassword = true;
-        fMiningRequiresPeers = true;
+        fMiningRequiresPeers = true;     
         fAllowMinDifficultyBlocks = false;
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
-        fSkipProofOfWorkCheck = false;
+        fSkipProofOfWorkCheck = false;      
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
 
@@ -153,6 +157,8 @@ public:
         strSporkKey = "04bd8d3e45f1c7fc1d34ce4c27356d3a5f43e1dfaf061e2152bbb68279741ab7197b4e74a81bea32ccd5f3b3f414a0cfa34a9c8ec747709897bb1fb8aea51fdcc0";
         strObfuscationPoolDummyAddress = "NQTuqzbn3aVbfQvFEFAHJFHoNB68JsVjr7";
         nStartMasternodePayments = 1578497190;
+
+    }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
@@ -177,28 +183,41 @@ public:
         pchMessageStart[3] = 0x78;
         vAlertPubKey = ParseHex("049c4bf0b18b4b968c1136fa1fed29a02192eb4f7d249975e71dd955d6672c3b883e3f60442846747039b1065fb56c89177df6b09b46f71c8f8a02b7807aa42e42");
         nDefaultPort = 39795;
+        nMaxReorganizationDepth = 100; // not in PIVX 2.3.0
         nEnforceBlockUpgradeMajority = 51;
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // AZZURE: 1 day
-        nTargetSpacing = 1 * 60;  // AZZURE: 1 minute
+        nTargetTimespan = 1 * 60; // Azzure: 1 day
+        nTargetSpacing = 1 * 60;  // Azzure: 1 minute
         nLastPOWBlock = 200;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
-        nModifierUpdateBlock = 500; //approx Mon, 17 Apr 2017 04:00:00 GMT
+        nMasternodeCollateralLimit = 10000; // also not in PIVX 2.3.0
+        nModifierUpdateBlock = 500;
         nMaxMoneyOut = 43199500 * COIN;
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
+        genesis.hashPrevBlock = 0;
+        genesis.hashMerkleRoot = genesis.BuildMerkleTree();
+        genesis.nVersion = 1;
         genesis.nTime = 1588351439;
+        genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 20588604;
 
+
         hashGenesisBlock = genesis.GetHash();
+
         assert(hashGenesisBlock == uint256("0x00000cba66e0a88c15a898836eb6e835c4ec96b28e7c94e6b4574c451f453b6b"));
+        assert(genesis.hashMerkleRoot == uint256("0xd5696584b38a036442ffd8c480c225e4af6d50c8e359464aa07bc21751ca6ad7"));
 
+        vFixedSeeds.clear();
+        vSeeds.clear();
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet azzure addresses start with 'x' or 'y'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet azzure script addresses start with '8' or '9'
+        vSeeds.push_back(CDNSSeedData("1", "45.76.123.6"));         // Single node address
+
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet Azzure addresses start with 'x' or 'y'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet Azzure script addresses start with '8' or '9'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);     // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         // Testnet Azzure BIP32 pubkeys start with 'DRKV'
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x80)(0x61)(0xa0).convert_to_container<std::vector<unsigned char> >();
@@ -215,6 +234,7 @@ public:
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
         fMineBlocksOnDemand = false;
+        fSkipProofOfWorkCheck = true;
         fTestnetToBeDeprecatedFieldRPC = true;
 
         nPoolMaxTransactions = 2;
@@ -249,15 +269,15 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
-        nTargetTimespan = 24 * 60 * 60; // Pivx: 1 day
-        nTargetSpacing = 1 * 60;        // Pivx: 1 minutes
+        nTargetTimespan = 24 * 60 * 60; // Azzure: 1 day
+        nTargetSpacing = 1 * 60;        // Azzure: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1588351439;
         genesis.nBits = 0x207fffff;
         genesis.nNonce = 20588604;
 
         hashGenesisBlock = genesis.GetHash();
-        nDefaultPort = 51476;
+        nDefaultPort = 99793;
         // assert(hashGenesisBlock == uint256("00000d885e2813770fd59e71010b6b62a9b0609655109bf4e1b24c3bd524ae0c"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.

@@ -2,7 +2,7 @@ sudo: required
 dist: trusty
 
 addons:
-  hostname: azzure-travis
+  hostname: Azzure-travis
 
 os: linux
 language: generic
@@ -37,7 +37,7 @@ env:
     #- HOST=i686-w64-mingw32 DPKG_ADD_ARCH="i386" DEP_OPTS="NO_QT=0" PACKAGES="python3 nsis g++-mingw-w64-i686 wine1.6 bc" RUN_TESTS=false GOAL="install" BITCOIN_CONFIG="--enable-reduce-exports --disable-bench --disable-zmq --disable-tests"
   # Win64
     #- HOST=x86_64-w64-mingw32 DPKG_ADD_ARCH="i386" DEP_OPTS="NO_QT=0" PACKAGES="python3 nsis g++-mingw-w64-x86-64 wine1.6 bc" RUN_TESTS=true GOAL="install" BITCOIN_CONFIG="--enable-reduce-exports --disable-bench --disable-zmq --disable-tests"
-  # azzured
+  # Azzured
     #- HOST=x86_64-unknown-linux-gnu PACKAGES="bc python3-zmq" DEP_OPTS="NO_QT=1 NO_UPNP=1 DEBUG=1" RUN_TESTS=true GOAL="install" BITCOIN_CONFIG="--enable-zmq --enable-glibc-back-compat --enable-reduce-exports CPPFLAGS=-DDEBUG_LOCKORDER" PYZMQ=true
 
 before_install:

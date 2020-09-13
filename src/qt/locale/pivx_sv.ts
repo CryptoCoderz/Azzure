@@ -591,8 +591,8 @@ Skriv in en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna d
         <translation>Skicka mynt till en AZZURE adress</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and azzure: URIs)</source>
-        <translation>Begär betalning (genererar QR kod och azzure: URls)</translation>
+        <source>Request payments (generates QR codes and Azzure: URIs)</source>
+        <translation>Begär betalning (genererar QR kod och Azzure: URls)</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -1365,7 +1365,7 @@ Skriv in en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna d
     </message>
     </context>
 <context>
-    <name>azzure-core</name>
+    <name>Azzure-core</name>
     <message>
         <source>Error</source>
         <translation>Fel</translation>

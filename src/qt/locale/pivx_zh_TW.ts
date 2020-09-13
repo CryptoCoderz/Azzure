@@ -590,8 +590,8 @@
         <translation>送出錢幣到 AZZURE 地址</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and azzure: URIs)</source>
-        <translation>請求付款 (會產生 QR Code跟 azzure 位址)</translation>
+        <source>Request payments (generates QR codes and Azzure: URIs)</source>
+        <translation>請求付款 (會產生 QR Code跟 Azzure 位址)</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -952,6 +952,6 @@
     </message>
     </context>
 <context>
-    <name>azzure-core</name>
+    <name>Azzure-core</name>
     </context>
 </TS>

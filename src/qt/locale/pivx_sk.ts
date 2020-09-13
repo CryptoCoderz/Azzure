@@ -606,8 +606,8 @@
         <translation>Odoslať mince na adresu AZZURE</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and azzure: URIs)</source>
-        <translation>Vyžiadať platby (generuje QR kódy a azzure: identifikátory URI)</translation>
+        <source>Request payments (generates QR codes and Azzure: URIs)</source>
+        <translation>Vyžiadať platby (generuje QR kódy a Azzure: identifikátory URI)</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -813,8 +813,8 @@ MultiSend: %1</translation>
         <translation>TextLabel</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (azzure.conf).</source>
-        <translation>Nie všetky transakcie sa zobrazia. Ak chcete zobraziť všetky transakcie, musíte v konfiguračnom súbore (azzure.conf) nastaviť txindex = 1.</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (Azzure.conf).</source>
+        <translation>Nie všetky transakcie sa zobrazia. Ak chcete zobraziť všetky transakcie, musíte v konfiguračnom súbore (Azzure.conf) nastaviť txindex = 1.</translation>
     </message>
 </context>
 <context>
@@ -1260,7 +1260,7 @@ MultiSend: %1</translation>
     </message>
     </context>
 <context>
-    <name>azzure-core</name>
+    <name>Azzure-core</name>
     <message>
         <source>Error</source>
         <translation>Chyba</translation>

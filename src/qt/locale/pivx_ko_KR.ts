@@ -610,8 +610,8 @@
         <translation>AZZURE 주소로 전송하기</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and azzure: URIs)</source>
-        <translation>결제 요청 (QR 코드 및 azzure: URI 생성)</translation>
+        <source>Request payments (generates QR codes and Azzure: URIs)</source>
+        <translation>결제 요청 (QR 코드 및 Azzure: URI 생성)</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -837,8 +837,8 @@ Address: %4
         <translation>텍스트라벨</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (azzure.conf).</source>
-        <translation>모든 트랜잭션이 표시되지는 않습니다. 모든 트랜잭션을 보려면 구성 파일 (azzure.conf)에 txindex = 1을 설정해야합니다.</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (Azzure.conf).</source>
+        <translation>모든 트랜잭션이 표시되지는 않습니다. 모든 트랜잭션을 보려면 구성 파일 (Azzure.conf)에 txindex = 1을 설정해야합니다.</translation>
     </message>
 </context>
 <context>
@@ -1719,9 +1719,9 @@ Please check the address and try again.</source>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/azzure-project/azzure-project-translations</source>
+https://www.transifex.com/Azzure-project/Azzure-project-translations</source>
         <translation>지원 언어가 없거나 번역이 불완전한가요? 번역 기여 도움말:
-https://www.transifex.com/azzure-project/azzure-project-translations</translation>
+https://www.transifex.com/Azzure-project/Azzure-project-translations</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -2092,7 +2092,7 @@ https://www.transifex.com/azzure-project/azzure-project-translations</translatio
         <translation>잘못된 결제 주소 %1</translation>
     </message>
     <message>
-        <source>Cannot start azzure: click-to-pay handler</source>
+        <source>Cannot start Azzure: click-to-pay handler</source>
         <translation>AZZURE을 시작할 수 없습니다: 결제하기 위한 클릭 처리</translation>
     </message>
     <message>
@@ -3866,7 +3866,7 @@ https://www.transifex.com/azzure-project/azzure-project-translations</translatio
     </message>
 </context>
 <context>
-    <name>azzure-core</name>
+    <name>Azzure-core</name>
     <message>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation>(1 = tx 메타 데이터 유지 예 : 계정 소유자 및 지불 요청 정보, 2 = tx 메타 데이터 삭제)</translation>
@@ -4052,10 +4052,10 @@ https://www.transifex.com/azzure-project/azzure-project-translations</translatio
         <translation>이 제품은 OpenSSL이 개발한 Open SSL 툴킷 &lt;https://www.openssl.org/&gt; 에서 사용하기 위한 프로젝트 소프트웨어, Eric Young이 개발한 암호화 소프트웨어, Thomas Bernard가 개발한 UPnP 소프트웨어가 포함되어 있습니다.</translation>
     </message>
     <message>
-        <source>To use azzured, or the -server option to azzure-qt, you must set an rpcpassword in the configuration file:
+        <source>To use Azzured, or the -server option to Azzure-qt, you must set an rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=azzurerpc
+rpcuser=Azzurerpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.

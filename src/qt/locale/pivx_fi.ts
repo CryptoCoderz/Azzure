@@ -583,8 +583,8 @@ Syötä salausavain laatikon keskelle. Paina salaa tuottaaksesi salatun yksityis
         <translation>Lähetä kolikkoja AZZURE osoitteeseen</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and azzure: URIs)</source>
-        <translation>Pyydä maksuja (Generoi QR koodeja ja azzure: URIja)</translation>
+        <source>Request payments (generates QR codes and Azzure: URIs)</source>
+        <translation>Pyydä maksuja (Generoi QR koodeja ja Azzure: URIja)</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -1887,7 +1887,7 @@ Please check the address and try again.</source>
     </message>
     </context>
 <context>
-    <name>azzure-core</name>
+    <name>Azzure-core</name>
     <message>
         <source>Error</source>
         <translation>Virhe</translation>

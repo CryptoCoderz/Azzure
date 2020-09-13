@@ -546,8 +546,8 @@
         <translation>An eine AZZURE-Adresse überweisen</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and azzure: URIs)</source>
-        <translation>Zahlung anfordern (QR-Code Generierung und azzure: URIs)</translation>
+        <source>Request payments (generates QR codes and Azzure: URIs)</source>
+        <translation>Zahlung anfordern (QR-Code Generierung und Azzure: URIs)</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -700,8 +700,8 @@ Adresse: %4</translation>
         <translation>Suche</translation>
     </message>
     <message>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (azzure.conf).</source>
-        <translation>Nicht alle Transaktionen können anzezeigt werden. Um alle Transaktionen zu sehen, müssen sie die Option  "txindex=1" in der "azzure.conf" Konfigurationsdatei hinzufügen.</translation>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (Azzure.conf).</source>
+        <translation>Nicht alle Transaktionen können anzezeigt werden. Um alle Transaktionen zu sehen, müssen sie die Option  "txindex=1" in der "Azzure.conf" Konfigurationsdatei hinzufügen.</translation>
     </message>
 </context>
 <context>
@@ -2459,7 +2459,7 @@ Adresse: %4</translation>
     </message>
 </context>
 <context>
-    <name>azzure-core</name>
+    <name>Azzure-core</name>
     <message>
         <source>Error</source>
         <translation>Fehler</translation>

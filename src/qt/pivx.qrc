@@ -37,12 +37,12 @@
         <file alias="tx_input">res/icons/tx_input.png</file>
         <file alias="tx_output">res/icons/tx_output.png</file>
         <file alias="tx_inout">res/icons/tx_inout.png</file>
-        <file alias="unit_azzure">res/icons/unit_azzure.png</file>
-        <file alias="unit_mazzure">res/icons/unit_mazzure.png</file>
-        <file alias="unit_uazzure">res/icons/unit_uazzure.png</file>
-        <file alias="unit_tazzure">res/icons/unit_tazzure.png</file>
-        <file alias="unit_tmazzure">res/icons/unit_tmazzure.png</file>
-        <file alias="unit_tuazzure">res/icons/unit_tuazzure.png</file>
+        <file alias="unit_Azzure">res/icons/unit_Azzure.png</file>
+        <file alias="unit_mAzzure">res/icons/unit_mAzzure.png</file>
+        <file alias="unit_uAzzure">res/icons/unit_uAzzure.png</file>
+        <file alias="unit_tAzzure">res/icons/unit_tAzzure.png</file>
+        <file alias="unit_tmAzzure">res/icons/unit_tmAzzure.png</file>
+        <file alias="unit_tuAzzure">res/icons/unit_tuAzzure.png</file>
         <file alias="lock_closed">res/icons/lock_closed.png</file>
         <file alias="lock_open">res/icons/lock_open.png</file>
         <file alias="key">res/icons/key.png</file>
@@ -58,7 +58,7 @@
     </qresource>
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>
-        <file alias="azzure_logo_horizontal">res/images/azzure_logo_horizontal.png</file>
+        <file alias="Azzure_logo_horizontal">res/images/Azzure_logo_horizontal.png</file>
         <file alias="downArrow">res/images/downArrow.png</file>
         <file alias="downArrow_small">res/images/downArrow_small.png</file>
         <file alias="upArrow_small">res/images/upArrow_small.png</file>

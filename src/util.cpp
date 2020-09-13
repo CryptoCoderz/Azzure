@@ -6,7 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/azzure-config.h"
+#include "config/Azzure-config.h"
 #endif
 
 #include "util.h"
@@ -231,8 +231,8 @@ bool LogAcceptCategory(const char* category)
             const vector<string>& categories = mapMultiArgs["-debug"];
             ptrCategory.reset(new set<string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
-            // "azzure" is a composite category enabling all AZZURE-related debug output
-            if (ptrCategory->count(string("azzure"))) {
+            // "Azzure" is a composite category enabling all AZZURE-related debug output
+            if (ptrCategory->count(string("Azzure"))) {
                 ptrCategory->insert(string("obfuscation"));
                 ptrCategory->insert(string("swifttx"));
                 ptrCategory->insert(string("masternode"));
@@ -396,7 +396,7 @@ static std::string FormatException(std::exception* pex, const char* pszThread)
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "azzure";
+    const char* pszModule = "Azzure";
 #endif
     if (pex)
         return strprintf(
@@ -420,7 +420,7 @@ boost::filesystem::path GetDefaultDataDir()
 // Windows < Vista: C:\Documents and Settings\Username\Application Data\AZZURE
 // Windows >= Vista: C:\Users\Username\AppData\Roaming\AZZURE
 // Mac: ~/Library/Application Support/AZZURE
-// Unix: ~/.azzure
+// Unix: ~/.Azzure
 #ifdef WIN32
     // Windows
     return GetSpecialFolderPath(CSIDL_APPDATA) / "AZZURE";
@@ -438,7 +438,7 @@ boost::filesystem::path GetDefaultDataDir()
     return pathRet / "AZZURE";
 #else
     // Unix
-    return pathRet / ".azzure";
+    return pathRet / ".Azzure";
 #endif
 #endif
 }
@@ -485,7 +485,7 @@ void ClearDatadirCache()
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "azzure.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "Azzure.conf"));
     if (!pathConfigFile.is_complete())
         pathConfigFile = GetDataDir(false) / pathConfigFile;
 
@@ -504,7 +504,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile());
     if (!streamConfig.good()) {
-        // Create empty azzure.conf if it does not exist
+        // Create empty Azzure.conf if it does not exist
         FILE* configFile = fopen(GetConfigFile().string().c_str(), "a");
         if (configFile != NULL)
             fclose(configFile);
@@ -515,7 +515,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
     setOptions.insert("*");
 
     for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it) {
-        // Don't overwrite existing settings so command line settings override azzure.conf
+        // Don't overwrite existing settings so command line settings override Azzure.conf
         string strKey = string("-") + it->string_key;
         string strValue = it->value[0];
         InterpretNegativeSetting(strKey, strValue);
@@ -530,7 +530,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 #ifndef WIN32
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", "azzured.pid"));
+    boost::filesystem::path pathPidFile(GetArg("-pid", "Azzured.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }

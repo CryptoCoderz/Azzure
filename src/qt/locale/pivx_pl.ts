@@ -526,8 +526,8 @@
         <translation>Wyślij monety do adresu AZZURE</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and azzure: URIs)</source>
-        <translation>Zarządaj płatności (generuje kod QR i azzure:URI)</translation>
+        <source>Request payments (generates QR codes and Azzure: URIs)</source>
+        <translation>Zarządaj płatności (generuje kod QR i Azzure:URI)</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -1225,9 +1225,9 @@ Proszę sprawdzić adres i spróbować ponownie</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/azzure-project/azzure-project-translations</source>
+https://www.transifex.com/Azzure-project/Azzure-project-translations</source>
         <translation>Brakuje języka bądź nieukończona pełnego tłumaczenia? Pomóż w tłumaczeniu tutaj:
-https://www.transifex.com/azzure-project/azzure-project-translations </translation>
+https://www.transifex.com/Azzure-project/Azzure-project-translations </translation>
     </message>
     <message>
         <source>Connect to the AZZURE network through a SOCKS5 proxy.</source>
@@ -2024,7 +2024,7 @@ https://www.transifex.com/azzure-project/azzure-project-translations </translati
     </message>
     </context>
 <context>
-    <name>azzure-core</name>
+    <name>Azzure-core</name>
     <message>
         <source>Error</source>
         <translation>Błąd</translation>

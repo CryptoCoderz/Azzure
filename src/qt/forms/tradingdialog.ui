@@ -445,7 +445,7 @@
       <string>Buy PIV</string>
      </property>
      <property name="icon">
-      <iconset resource="../azzure.qrc">
+      <iconset resource="../Azzure.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -1754,7 +1754,7 @@
       <string>Sell PIV</string>
      </property>
      <property name="icon">
-      <iconset resource="../azzure">
+      <iconset resource="../Azzure">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -2944,7 +2944,7 @@
       <string>Generate Pivx Deposit Address</string>
      </property>
      <property name="icon">
-      <iconset resource="../azzure.qrc">
+      <iconset resource="../Azzure.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -3206,7 +3206,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="../azzure.qrc">:/icons/transaction_1</pixmap>
+       <pixmap resource="../Azzure.qrc">:/icons/transaction_1</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -3253,7 +3253,7 @@
       <string>Update API Keys</string>
      </property>
      <property name="icon">
-      <iconset resource="../azzure.qrc">
+      <iconset resource="../Azzure.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -3408,7 +3408,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="../azzure.qrc"/>
+  <include location="../Azzure.qrc"/>
  </resources>
  <connections/>
 </ui>
