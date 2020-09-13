@@ -176,16 +176,16 @@
         <translation>Potvrdit zašifrování peněženky</translation>
     </message>
     <message>
-        <source>AZZURE will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your PIVs from being stolen by malware infecting your computer.</source>
-        <translation>AZZURE se teď zavře pro dokončení šifrovacího procesu. Prosím, vemte na vědomí, že zašifrování Vaší peněženky plně neochrání Vaše PIVy před krádží, pokud je Váš počítač infikován malwarem.</translation>
+        <source>AZZURE will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your AZZRs from being stolen by malware infecting your computer.</source>
+        <translation>AZZURE se teď zavře pro dokončení šifrovacího procesu. Prosím, vemte na vědomí, že zašifrování Vaší peněženky plně neochrání Vaše AZZRy před krádží, pokud je Váš počítač infikován malwarem.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Opravdu chcete zašifrovat Vaši peněženku?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PIV&lt;/b&gt;!</source>
-        <translation>Varování: Pokud zašifrujete svou peněženku a ztratíte frázové heslo, tak &lt;b&gt;ZTRATÍTE VŠECHNY VAŠE PIVy&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR AZZR&lt;/b&gt;!</source>
+        <translation>Varování: Pokud zašifrujete svou peněženku a ztratíte frázové heslo, tak &lt;b&gt;ZTRATÍTE VŠECHNY VAŠE AZZRy&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -1442,24 +1442,24 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
         <translation>Vyberte úrpvěň ochrany soukromí</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 10000 PIV</source>
-        <translation>Použí 2 oddělené masternody k promíchání prostředků až do 10000 PIV</translation>
+        <source>Use 2 separate masternodes to mix funds up to 10000 AZZR</source>
+        <translation>Použí 2 oddělené masternody k promíchání prostředků až do 10000 AZZR</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Použít 16 oddělených masternodů</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 PIV to anonymize 10000 PIV</source>
-        <translation>Tato možnost je nejrychleší a bude stát zhruba ~0.025 PIV pro anonymizaci 10000 PIV</translation>
+        <source>This option is the quickest and will cost about ~0.025 AZZR to anonymize 10000 AZZR</source>
+        <translation>Tato možnost je nejrychleší a bude stát zhruba ~0.025 AZZR pro anonymizaci 10000 AZZR</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
         <translation>Toto je nejpomalejší a nejvíce bezpečná volba. Použití maximalní anonymity bude stát</translation>
     </message>
     <message>
-        <source>0.1 PIV per 10000 PIV you anonymize.</source>
-        <translation>0.1 PIV za 10000 PIV anonymizujete.</translation>
+        <source>0.1 AZZR per 10000 AZZR you anonymize.</source>
+        <translation>0.1 AZZR za 10000 AZZR anonymizujete.</translation>
     </message>
     <message>
         <source>Obfuscation Configuration</source>
@@ -1639,8 +1639,8 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
         <translation>Obfuskační Balance:</translation>
     </message>
     <message>
-        <source>0 PIV / 0 Rounds</source>
-        <translation>0 PIV / 0 Kol</translation>
+        <source>0 AZZR / 0 Rounds</source>
+        <translation>0 AZZR / 0 Kol</translation>
     </message>
     <message>
         <source>Enabled/Disabled</source>
@@ -2066,8 +2066,8 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
         <translation>Změna:</translation>
     </message>
     <message>
-        <source>0 PIV</source>
-        <translation>0 PIV</translation>
+        <source>0 AZZR</source>
+        <translation>0 AZZR</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>

@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2015-2017 The AZZRX developers
 // Copyright (c) 2018 LightPayCoin developers
 // Copyright (c) 2019 The Azzure developers
 // Distributed under the MIT software license, see the accompanying
@@ -183,7 +183,7 @@ public:
         pchMessageStart[3] = 0x78;
         vAlertPubKey = ParseHex("049c4bf0b18b4b968c1136fa1fed29a02192eb4f7d249975e71dd955d6672c3b883e3f60442846747039b1065fb56c89177df6b09b46f71c8f8a02b7807aa42e42");
         nDefaultPort = 39795;
-        nMaxReorganizationDepth = 100; // not in PIVX 2.3.0
+        nMaxReorganizationDepth = 100; // not in AZZRX 2.3.0
         nEnforceBlockUpgradeMajority = 51;
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
@@ -193,7 +193,7 @@ public:
         nLastPOWBlock = 200;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
-        nMasternodeCollateralLimit = 10000; // also not in PIVX 2.3.0
+        nMasternodeCollateralLimit = 10000; // also not in AZZRX 2.3.0
         nModifierUpdateBlock = 500;
         nMaxMoneyOut = 43199500 * COIN;
 
