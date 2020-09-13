@@ -1,9 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 LightPayCoin developers
-// Copyright (c) 2019-2020 The Azzure developers
+// Copyright (c) 2015-2017 The AZZURE developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -107,7 +105,7 @@ std::string to_internal(const std::string&);
 
 using namespace std;
 
-//Azzure only features
+//AZZURE only features
 bool fMasterNode = false;
 string strMasterNodePrivKey = "";
 string strMasterNodeAddr = "";
@@ -115,7 +113,7 @@ bool fLiteMode = false;
 bool fEnableSwiftTX = true;
 int nSwiftTXDepth = 5;
 int nObfuscationRounds = 2;
-int nAnonymizeAzzureAmount = 1000;
+int nAnonymizePivxAmount = 1000;
 int nLiquidityProvider = 0;
 /** Spork enforcement enabled time */
 int64_t enforceMasternodePaymentsTime = 4085657524;
@@ -233,7 +231,7 @@ bool LogAcceptCategory(const char* category)
             const vector<string>& categories = mapMultiArgs["-debug"];
             ptrCategory.reset(new set<string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
-            // "Azzure" is a composite category enabling all Azzure-related debug output
+            // "Azzure" is a composite category enabling all AZZURE-related debug output
             if (ptrCategory->count(string("Azzure"))) {
                 ptrCategory->insert(string("obfuscation"));
                 ptrCategory->insert(string("swifttx"));
@@ -419,13 +417,13 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-// Windows < Vista: C:\Documents and Settings\Username\Application Data\Azzure
-// Windows >= Vista: C:\Users\Username\AppData\Roaming\Azzure
-// Mac: ~/Library/Application Support/Azzure
+// Windows < Vista: C:\Documents and Settings\Username\Application Data\AZZURE
+// Windows >= Vista: C:\Users\Username\AppData\Roaming\AZZURE
+// Mac: ~/Library/Application Support/AZZURE
 // Unix: ~/.Azzure
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Azzure";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "AZZURE";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -437,7 +435,7 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / "Azzure";
+    return pathRet / "AZZURE";
 #else
     // Unix
     return pathRet / ".Azzure";

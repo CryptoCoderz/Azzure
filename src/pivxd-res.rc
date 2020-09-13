@@ -16,8 +16,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Azzure"
-            VALUE "FileDescription",    "Azzured (OSS daemon/client for Azzure)"
+            VALUE "CompanyName",        "AZZURE"
+            VALUE "FileDescription",    "Azzured (OSS daemon/client for Pivx)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "Azzured"
             VALUE "LegalCopyright",     COPYRIGHT_STR

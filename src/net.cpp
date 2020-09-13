@@ -1,9 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 LightPayCoin developers
-// Copyright (c) 2019-2020 The Azzure developers
+// Copyright (c) 2015-2017 The AZZURE developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -180,10 +178,14 @@ bool RecvLine(SOCKET hSocket, string& strLine)
                 return true;
         } else if (nBytes <= 0) {
             boost::this_thread::interruption_point();
-            if (nBytes == 0) {
-                // couldn't send anything at all
-                LogPrintf("socket send error: data failure\n");
-                return false;
+            if (nBytes < 0) {
+                int nErr = WSAGetLastError();
+                if (nErr == WSAEMSGSIZE)
+                    continue;
+                if (nErr == WSAEWOULDBLOCK || nErr == WSAEINTR || nErr == WSAEINPROGRESS) {
+                    MilliSleep(10);
+                    continue;
+                }
             }
             if (!strLine.empty())
                 return true;
@@ -559,7 +561,7 @@ void CNode::copyStats(CNodeStats& stats)
         nPingUsecWait = GetTimeMicros() - nPingUsecStart;
     }
 
-    // Raw ping time is in microseconds, but show it to user as whole seconds (Azzure users should be well used to small numbers with many decimal places by now :)
+    // Raw ping time is in microseconds, but show it to user as whole seconds (AZZURE users should be well used to small numbers with many decimal places by now :)
     stats.dPingTime = (((double)nPingUsecTime) / 1e6);
     stats.dPingWait = (((double)nPingUsecWait) / 1e6);
 
@@ -676,13 +678,15 @@ void SocketSendData(CNode* pnode)
                 break;
             }
         } else {
-            if (nBytes == 0) {
-                // couldn't send anything at all
-                LogPrintf("socket send error: data failure\n");
-                pnode->CloseSocketDisconnect();
-                break;
+            if (nBytes < 0) {
+                // error
+                int nErr = WSAGetLastError();
+                if (nErr != WSAEWOULDBLOCK && nErr != WSAEMSGSIZE && nErr != WSAEINTR && nErr != WSAEINPROGRESS) {
+                    LogPrintf("socket send error %s\n", NetworkErrorString(nErr));
+                    pnode->CloseSocketDisconnect();
+                }
             }
-            pnode->CloseSocketDisconnect();
+            // couldn't send anything at all
             break;
         }
     }
@@ -919,11 +923,14 @@ void ThreadSocketHandler()
                             if (!pnode->fDisconnect)
                                 LogPrint("net", "socket closed\n");
                             pnode->CloseSocketDisconnect();
-                        } else if (nBytes == 0) {
-                            // couldn't send anything at all
-                            LogPrintf("socket send error: data failure\n");
-                            pnode->CloseSocketDisconnect();
-                            continue;
+                        } else if (nBytes < 0) {
+                            // error
+                            int nErr = WSAGetLastError();
+                            if (nErr != WSAEWOULDBLOCK && nErr != WSAEMSGSIZE && nErr != WSAEINTR && nErr != WSAEINPROGRESS) {
+                                if (!pnode->fDisconnect)
+                                    LogPrintf("socket recv error %s\n", NetworkErrorString(nErr));
+                                pnode->CloseSocketDisconnect();
+                            }
                         }
                     }
                 }
@@ -1011,7 +1018,7 @@ void ThreadMapPort()
             }
         }
 
-        string strDesc = "Azzure " + FormatFullVersion();
+        string strDesc = "AZZURE " + FormatFullVersion();
 
         try {
             while (true) {
@@ -1483,7 +1490,7 @@ bool BindListenPort(const CService& addrBind, string& strError, bool fWhiteliste
     if (::bind(hListenSocket, (struct sockaddr*)&sockaddr, len) == SOCKET_ERROR) {
         int nErr = WSAGetLastError();
         if (nErr == WSAEADDRINUSE)
-            strError = strprintf(_("Unable to bind to %s on this computer. Azzure Core is probably already running."), addrBind.ToString());
+            strError = strprintf(_("Unable to bind to %s on this computer. AZZURE Core is probably already running."), addrBind.ToString());
         else
             strError = strprintf(_("Unable to bind to %s on this computer (bind returned error %s)"), addrBind.ToString(), NetworkErrorString(nErr));
         LogPrintf("%s\n", strError);

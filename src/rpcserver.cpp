@@ -1,9 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 LightPayCoin developers
-// Copyright (c) 2019-2020 The Azzure developers
+// Copyright (c) 2015-2017 The AZZURE developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -221,10 +219,10 @@ Value stop(const Array& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop Azzure server.");
+            "\nStop AZZURE server.");
     // Shutdown will take long enough that the response should get back
     StartShutdown();
-    return "Azzure server stopping";
+    return "AZZURE server stopping";
 }
 
 
@@ -301,34 +299,14 @@ static const CRPCCommand vRPCCommands[] =
         {"hidden", "reconsiderblock", &reconsiderblock, true, true, false},
         {"hidden", "setmocktime", &setmocktime, true, false, false},
 
-        /* Azzure features */
+        /* Pivx features */
         {"Azzure", "masternode", &masternode, true, true, false},
-        {"Azzure", "listmasternodes", &listmasternodes, true, true, false},
-        {"Azzure", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"Azzure", "masternodeconnect", &masternodeconnect, true, true, false},
-        {"Azzure", "masternodecurrent", &masternodecurrent, true, true, false},
-        {"Azzure", "masternodedebug", &masternodedebug, true, true, false},
-        {"Azzure", "startmasternode", &startmasternode, true, true, false},
-        {"Azzure", "createmasternodekey", &createmasternodekey, true, true, false},
-        {"Azzure", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
-        {"Azzure", "listmasternodeconf", &listmasternodeconf, true, true, false},
-        {"Azzure", "getmasternodestatus", &getmasternodestatus, true, true, false},
-        {"Azzure", "getmasternodewinners", &getmasternodewinners, true, true, false},
-        {"Azzure", "getmasternodescores", &getmasternodescores, true, true, false},
+        {"Azzure", "masternodelist", &masternodelist, true, true, false},
         {"Azzure", "mnbudget", &mnbudget, true, true, false},
-        {"Azzure", "preparebudget", &preparebudget, true, true, false},
-        {"Azzure", "submitbudget", &submitbudget, true, true, false},
-        {"Azzure", "mnbudgetvote", &mnbudgetvote, true, true, false},
-        {"Azzure", "getbudgetvotes", &getbudgetvotes, true, true, false},
-        {"Azzure", "getnextsuperblock", &getnextsuperblock, true, true, false},
-        {"Azzure", "getbudgetprojection", &getbudgetprojection, true, true, false},
-        {"Azzure", "getbudgetinfo", &getbudgetinfo, true, true, false},
-        {"Azzure", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
+        {"Azzure", "mnbudgetvoteraw", &mnbudgetvoteraw, true, true, false},
         {"Azzure", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        {"Azzure", "checkbudgets", &checkbudgets, true, true, false},
         {"Azzure", "mnsync", &mnsync, true, true, false},
         {"Azzure", "spork", &spork, true, true, false},
-        {"Azzure", "getpoolinfo", &getpoolinfo, true, true, false},
 #ifdef ENABLE_WALLET
         {"Azzure", "obfuscation", &obfuscation, false, false, true}, /* not threadSafe because of SendMoney */
 
@@ -492,8 +470,8 @@ private:
 void ServiceConnection(AcceptedConnection* conn);
 
 //! Forward declaration required for RPCListen
-template <typename Protocol>
-static void RPCAcceptHandler(boost::shared_ptr<basic_socket_acceptor<Protocol> > acceptor,
+template <typename Protocol, typename SocketAcceptorService>
+static void RPCAcceptHandler(boost::shared_ptr<basic_socket_acceptor<Protocol, SocketAcceptorService> > acceptor,
     ssl::context& context,
     bool fUseSSL,
     boost::shared_ptr<AcceptedConnection> conn,
@@ -502,8 +480,8 @@ static void RPCAcceptHandler(boost::shared_ptr<basic_socket_acceptor<Protocol> >
 /**
  * Sets up I/O resources to accept and handle a new connection.
  */
-template <typename Protocol>
-static void RPCListen(boost::shared_ptr<basic_socket_acceptor<Protocol> > acceptor,
+template <typename Protocol, typename SocketAcceptorService>
+static void RPCListen(boost::shared_ptr<basic_socket_acceptor<Protocol, SocketAcceptorService> > acceptor,
     ssl::context& context,
     const bool fUseSSL)
 {
@@ -513,7 +491,7 @@ static void RPCListen(boost::shared_ptr<basic_socket_acceptor<Protocol> > accept
     acceptor->async_accept(
         conn->sslStream.lowest_layer(),
         conn->peer,
-        boost::bind(&RPCAcceptHandler<Protocol>,
+        boost::bind(&RPCAcceptHandler<Protocol, SocketAcceptorService>,
             acceptor,
             boost::ref(context),
             fUseSSL,
@@ -525,8 +503,8 @@ static void RPCListen(boost::shared_ptr<basic_socket_acceptor<Protocol> > accept
 /**
  * Accept and handle incoming connection.
  */
-template <typename Protocol>
-static void RPCAcceptHandler(boost::shared_ptr<basic_socket_acceptor<Protocol> > acceptor,
+template <typename Protocol, typename SocketAcceptorService>
+static void RPCAcceptHandler(boost::shared_ptr<basic_socket_acceptor<Protocol, SocketAcceptorService> > acceptor,
     ssl::context& context,
     const bool fUseSSL,
     boost::shared_ptr<AcceptedConnection> conn,
@@ -604,7 +582,7 @@ void StartRPCThreads()
                                                "The username and password MUST NOT be the same.\n"
                                                "If the file does not exist, create it with owner-readable-only file permissions.\n"
                                                "It is also recommended to set alertnotify so you are notified of problems;\n"
-                                               "for example: alertnotify=echo %%s | mail -s \"Azzure Alert\" admin@foo.com\n"),
+                                               "for example: alertnotify=echo %%s | mail -s \"AZZURE Alert\" admin@foo.com\n"),
                                              GetConfigFile().string(),
                                              EncodeBase58(&rand_pwd[0], &rand_pwd[0] + 32)),
             "", CClientUIInterface::MSG_ERROR | CClientUIInterface::SECURE);
@@ -614,7 +592,7 @@ void StartRPCThreads()
 
     assert(rpc_io_service == NULL);
     rpc_io_service = new asio::io_service();
-    rpc_ssl_context = new ssl::context(ssl::context::sslv23);
+    rpc_ssl_context = new ssl::context(*rpc_io_service, ssl::context::sslv23);
 
     const bool fUseSSL = GetBoolArg("-rpcssl", false);
 
@@ -636,7 +614,7 @@ void StartRPCThreads()
             LogPrintf("ThreadRPCServer ERROR: missing server private key file %s\n", pathPKFile.string());
 
         string strCiphers = GetArg("-rpcsslciphers", "TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH");
-        SSL_CTX_set_cipher_list(rpc_ssl_context->native_handle(), strCiphers.c_str());
+        SSL_CTX_set_cipher_list(rpc_ssl_context->impl(), strCiphers.c_str());
     }
 
     std::vector<ip::tcp::endpoint> vEndpoints;
@@ -1062,7 +1040,7 @@ std::string HelpExampleRpc(string methodname, string args)
 {
     return "> curl --user myusername --data-binary '{\"jsonrpc\": \"1.0\", \"id\":\"curltest\", "
            "\"method\": \"" +
-           methodname + "\", \"params\": [" + args + "] }' -H 'content-type: text/plain;' http://127.0.0.1:11116/\n";
+           methodname + "\", \"params\": [" + args + "] }' -H 'content-type: text/plain;' http://127.0.0.1:51473/\n";
 }
 
 const CRPCTable tableRPC;

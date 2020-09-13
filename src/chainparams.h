@@ -11,7 +11,7 @@
 #include "primitives/block.h"
 #include "protocol.h"
 #include "uint256.h"
-//#include "bignum.h"
+
 #include <vector>
 
 typedef unsigned char MessageStartChars[MESSAGE_START_SIZE];
@@ -23,7 +23,7 @@ struct CDNSSeedData {
 
 /**
  * CChainParams defines various tweakable parameters of a given instance of the
- * Azzure system. There are three: the main network on which people trade goods
+ * AZZURE system. There are three: the main network on which people trade goods
  * and services, the public test network which gets reset from time to time and
  * a regression test mode which is intended for private networks only. It has
  * minimal difficulty to ensure that blocks can be found instantly.
@@ -79,7 +79,6 @@ public:
     CAmount MaxMoneyOut() const { return nMaxMoneyOut; }
     /** The masternode count that we will allow the see-saw reward payments to be off by */
     int MasternodeCountDrift() const { return nMasternodeCountDrift; }
-    int MasternodeCollateralLimit() const { return nMasternodeCollateralLimit; }
     /** Make miner stop after a block is found. In RPC, don't return until nGenProcLimit blocks are generated */
     bool MineBlocksOnDemand() const { return fMineBlocksOnDemand; }
     /** In the future use NetworkIDString() for RPC fields */
@@ -114,7 +113,6 @@ protected:
     int64_t nTargetSpacing;
     int nLastPOWBlock;
     int nMasternodeCountDrift;
-    int nMasternodeCollateralLimit;
     int nMaturity;
     int nModifierUpdateBlock;
     CAmount nMaxMoneyOut;

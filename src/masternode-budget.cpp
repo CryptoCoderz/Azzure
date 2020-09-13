@@ -1,7 +1,5 @@
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 LightPayCoin developers
-// Copyright (c) 2019-2020 The Azzure developers
+// Copyright (c) 2015-2017 The AZZURE developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -490,10 +488,6 @@ void CBudgetManager::FillBlockPayee(CMutableTransaction& txNew, CAmount nFees, b
             CTxDestination address1;
             ExtractDestination(payee, address1);
             CBitcoinAddress address2(address1);
-            LogPrint("masternode","CBudgetManager::FillBlockPayee - Budget payment to %s for %lld, nHighestCount = %d\n", address2.ToString(), nAmount, nHighestCount);
-        }
-        else {
-            LogPrint("masternode","CBudgetManager::FillBlockPayee - No Budget payment, nHighestCount = %d\n", nHighestCount);
         }
     } else {
         //miners get the full amount on these blocks
@@ -510,7 +504,7 @@ void CBudgetManager::FillBlockPayee(CMutableTransaction& txNew, CAmount nFees, b
             ExtractDestination(payee, address1);
             CBitcoinAddress address2(address1);
 
-            LogPrint("masternode","CBudgetManager::FillBlockPayee - Budget payment to %s for %lld\n", address2.ToString(), nAmount);
+            LogPrintf("CBudgetManager::FillBlockPayee - Budget payment to %s for %lld\n", address2.ToString(), nAmount);
         }
     }
 }
@@ -627,25 +621,17 @@ bool CBudgetManager::IsTransactionValid(const CTransaction& txNew, int nBlockHei
     while (it != mapFinalizedBudgets.end()) {
         CFinalizedBudget* pfinalizedBudget = &((*it).second);
 
-    if (pfinalizedBudget->GetVoteCount() > nHighestCount - mnodeman.CountEnabled(ActiveProtocol()) / 10) {
-            LogPrintf("CBudgetManager::IsTransactionValid() - GetVoteCount: %d is larger than nHighestCount(%d) - masternodes/10 (%d) \n", pfinalizedBudget->GetVoteCount(), nHighestCount, mnodeman.CountEnabled(ActiveProtocol()) / 10);
+        if (pfinalizedBudget->GetVoteCount() > nHighestCount - mnodeman.CountEnabled(ActiveProtocol()) / 10) {
             if (nBlockHeight >= pfinalizedBudget->GetBlockStart() && nBlockHeight <= pfinalizedBudget->GetBlockEnd()) {
-                LogPrintf("CBudgetManager::IsTransactionValid() - nBlockHeight(%d) is >= block start(%d) and <= block end(%d)\n", nBlockHeight, pfinalizedBudget->GetBlockStart(), pfinalizedBudget->GetBlockEnd());
                 if (pfinalizedBudget->IsTransactionValid(txNew, nBlockHeight)) {
-                    LogPrintf("CBudgetManager::IsTransactionValid() - finalizedBudget->IsTransactionValid - true");
                     return true;
-                } else {
-                    LogPrintf("CBudgetManager::IsTransactionValid() - finalizedBudget->IsTransactionValid - false");
                 }
-            } else {
-                LogPrintf("CBudgetManager::IsTransactionValid() - nBlockHeight(%d) is NOT >= block start(%d) and <= block end(%d)\n", nBlockHeight, pfinalizedBudget->GetBlockStart(), pfinalizedBudget->GetBlockEnd());
             }
-        } else {
-            LogPrintf("CBudgetManager::IsTransactionValid() - GetVoteCount: %d is NOT larger than nHighestCount(%d) - masternodes/10 (%d) \n", pfinalizedBudget->GetVoteCount(), nHighestCount, mnodeman.CountEnabled(ActiveProtocol()) / 10);
         }
+
         ++it;
     }
-    LogPrintf("CBudgetManager::IsTransactionValid() - We looked through all of the known budgets and couldn't find what we were looking for\n" );
+
     //we looked through all of the known budgets
     return false;
 }
@@ -801,7 +787,47 @@ std::string CBudgetManager::GetRequiredPaymentsString(int nBlockHeight)
 
 CAmount CBudgetManager::GetTotalBudget(int nHeight)
 {
-	return 0;
+    if (chainActive.Tip() == NULL) return 0;
+
+    if (Params().NetworkID() == CBaseChainParams::TESTNET) {
+        CAmount nSubsidy = 500 * COIN;
+        return ((nSubsidy / 100) * 10) * 146;
+    }
+
+    //get block value and calculate from that
+    CAmount nSubsidy = 0;
+    if (nHeight <= Params().LAST_POW_BLOCK() && nHeight >= 151200) {
+        nSubsidy = 50 * COIN;
+    } else if (nHeight <= 302399 && nHeight > Params().LAST_POW_BLOCK()) {
+        nSubsidy = 50 * COIN;
+    } else if (nHeight <= 345599 && nHeight >= 302400) {
+        nSubsidy = 45 * COIN;
+    } else if (nHeight <= 388799 && nHeight >= 345600) {
+        nSubsidy = 40 * COIN;
+    } else if (nHeight <= 431999 && nHeight >= 388800) {
+        nSubsidy = 35 * COIN;
+    } else if (nHeight <= 475199 && nHeight >= 432000) {
+        nSubsidy = 30 * COIN;
+    } else if (nHeight <= 518399 && nHeight >= 475200) {
+        nSubsidy = 25 * COIN;
+    } else if (nHeight <= 561599 && nHeight >= 518400) {
+        nSubsidy = 20 * COIN;
+    } else if (nHeight <= 604799 && nHeight >= 561600) {
+        nSubsidy = 15 * COIN;
+    } else if (nHeight <= 647999 && nHeight >= 604800) {
+        nSubsidy = 10 * COIN;
+    } else if (nHeight >= 648000) {
+        nSubsidy = 5 * COIN;
+    } else {
+        nSubsidy = 0 * COIN;
+    }
+
+    // Amount of blocks in a months period of time (using 1 minutes per) = (60*24*30)
+    if (nHeight <= 172800) {
+        return 648000 * COIN;
+    } else {
+        return ((nSubsidy / 100) * 10) * 1440 * 30;
+    }
 }
 
 void CBudgetManager::NewBlock()
@@ -932,6 +958,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
             if (nProp == 0) {
                 if (pfrom->HasFulfilledRequest("mnvs")) {
                     LogPrintf("mnvs - peer already asked me for the list\n");
+                    Misbehaving(pfrom->GetId(), 20);
                     return;
                 }
                 pfrom->FulfilledRequest("mnvs");
@@ -999,6 +1026,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         mapSeenMasternodeBudgetVotes.insert(make_pair(vote.GetHash(), vote));
         if (!vote.SignatureValid(true)) {
             LogPrintf("mvote - signature invalid\n");
+            if (masternodeSync.IsSynced()) Misbehaving(pfrom->GetId(), 20);
             // it could just be a non-synced masternode
             mnodeman.AskForMN(pfrom, vote.vin);
             return;
@@ -1070,6 +1098,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         mapSeenFinalizedBudgetVotes.insert(make_pair(vote.GetHash(), vote));
         if (!vote.SignatureValid(true)) {
             LogPrintf("fbvote - signature invalid\n");
+            if (masternodeSync.IsSynced()) Misbehaving(pfrom->GetId(), 20);
             // it could just be a non-synced masternode
             mnodeman.AskForMN(pfrom, vote.vin);
             return;
@@ -1613,9 +1642,7 @@ bool CBudgetVote::SignatureValid(bool fSignatureCheck)
     CMasternode* pmn = mnodeman.Find(vin);
 
     if (pmn == NULL) {
-        if (fDebug){
-            LogPrintf("CBudgetVote::SignatureValid() - Unknown Masternode - %s\n", vin.prevout.hash.ToString());
-        }
+        LogPrintf("CBudgetVote::SignatureValid() - Unknown Masternode - %s\n", vin.prevout.hash.ToString());
         return false;
     }
 

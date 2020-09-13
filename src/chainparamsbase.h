@@ -10,7 +10,7 @@
 
 /**
  * CBaseChainParams defines the base parameters (shared between Azzure-cli and Azzured)
- * of a given instance of the Azzure system.
+ * of a given instance of the Pivx system.
  */
 class CBaseChainParams
 {

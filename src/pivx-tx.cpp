@@ -46,7 +46,7 @@ static bool AppInitRawTx(int argc, char* argv[])
 
     if (argc < 2 || mapArgs.count("-?") || mapArgs.count("-help")) {
         // First part of help message is specific to this utility
-        std::string strUsage = _("Azzure Core Azzure-tx utility version") + " " + FormatFullVersion() + "\n\n" +
+        std::string strUsage = _("Pivx Core Azzure-tx utility version") + " " + FormatFullVersion() + "\n\n" +
                                _("Usage:") + "\n" +
                                "  Azzure-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded Azzure transaction") + "\n" +
                                "  Azzure-tx [options] -create [commands]   " + _("Create hex-encoded Azzure transaction") + "\n" +

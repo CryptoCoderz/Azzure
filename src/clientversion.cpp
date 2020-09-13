@@ -13,7 +13,7 @@
  * for both Azzured and Azzure-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("Azzure Core");
+const std::string CLIENT_NAME("AZZURE Core");
 
 /**
  * Client version number
