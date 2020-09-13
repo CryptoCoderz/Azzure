@@ -13,6 +13,7 @@
 #include "guiutil.h"
 #include "masternodeconfig.h"
 #include "multisenddialog.h"
+#include "multisigdialog.h"
 #include "optionsmodel.h"
 #include "overviewpage.h"
 #include "receivecoinsdialog.h"
@@ -264,6 +265,13 @@ void WalletView::gotoMultiSendDialog()
     multiSendDialog->show();
 }
 
+void WalletView::gotoMultisigDialog(int index)
+{
+    MultisigDialog* multisig = new MultisigDialog(this);
+    multisig->setModel(walletModel);
+    multisig->showTab(index);
+}
+
 bool WalletView::handlePaymentRequest(const SendCoinsRecipient& recipient)
 {
     return sendCoinsPage->handlePaymentRequest(recipient);
@@ -331,6 +339,24 @@ void WalletView::lockWallet()
         return;
 
     walletModel->setWalletLocked(true);
+}
+
+void WalletView::toggleLockWallet()
+{
+    if (!walletModel)
+        return;
+
+    WalletModel::EncryptionStatus encStatus = walletModel->getEncryptionStatus();
+
+    // Unlock the wallet when requested
+    if (encStatus == walletModel->Locked) {
+        AskPassphraseDialog dlg(AskPassphraseDialog::UnlockAnonymize, this, walletModel);
+        dlg.exec();
+    }
+
+    else if (encStatus == walletModel->Unlocked || encStatus == walletModel->UnlockedForAnonymizationOnly) {
+            walletModel->setWalletLocked(true);
+    }
 }
 
 void WalletView::usedSendingAddresses()

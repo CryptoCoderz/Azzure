@@ -1,6 +1,8 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The AZZURE developers
+// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2018 LightPayCoin developers
+// Copyright (c) 2019-2020 The Azzure developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +15,7 @@ static const int MODEL_UPDATE_DELAY = 250;
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* Pivx GUI -- Size of icons in status bar */
+/* Azzure GUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -48,9 +50,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 35
 
-#define QAPP_ORG_NAME "AZZURE"
+#define QAPP_ORG_NAME "Azzure"
 #define QAPP_ORG_DOMAIN "Azzure.org"
-#define QAPP_APP_NAME_DEFAULT "AZZURE-Qt"
-#define QAPP_APP_NAME_TESTNET "AZZURE-Qt-testnet"
+#define QAPP_APP_NAME_DEFAULT "Azzure-Qt"
+#define QAPP_APP_NAME_TESTNET "Azzure-Qt-testnet"
 
 #endif // BITCOIN_QT_GUICONSTANTS_H
