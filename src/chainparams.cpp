@@ -161,6 +161,7 @@ public:
 		nStartMasternodePayments_V2 = 1616241600;// Saturday, March 20, 2021 12:00:00 PM
 		
 		nAzzrNetUpgrade = 430000;
+		nAzzrEmissionsUpgrade = 440000;
 
     }
 
@@ -248,6 +249,7 @@ public:
         nStartMasternodePayments = 1524873600; //Fri, 09 Jan 2015 21:05:58 GMT
 		nStartMasternodePayments_V2 = 1616241600;// Saturday, March 20, 2021 12:00:00 PM
 		nAzzrNetUpgrade = 1000;
+		nAzzrEmissionsUpgrade = 4400;
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
@@ -299,6 +301,7 @@ public:
         fTestnetToBeDeprecatedFieldRPC = false;
 		nStartMasternodePayments_V2 = 1616241600;// Saturday, March 20, 2021 12:00:00 PM
 		nAzzrNetUpgrade = 10;
+		nAzzrEmissionsUpgrade = 44;
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {

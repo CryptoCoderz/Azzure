@@ -377,6 +377,12 @@ unsigned int VRX_Retarget(const CBlockIndex* pindexLast, bool fProofOfStake)
     // Final log
     oldBN = bnOld.GetCompact();
     newBN = bnNew.GetCompact();
+	
+	// Ensure network emissions upgrade
+	if (pindexLast->nHeight == Params().AzzrEmissionsUpgrade())
+	{
+		bnNew /= 2;
+	}
 
     // Return difficulty
     return bnNew.GetCompact();

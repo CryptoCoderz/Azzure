@@ -1762,7 +1762,9 @@ int64_t GetBlockValue(int nHeight)
         nSubsidy = 1500 * COIN;
     }   else if (nHeight > 300000) {
         nSubsidy = 1000 * COIN;
-    }	else if (nHeight > Params().AzzrNetUpgrade()) {
+    }	
+	
+	if (nHeight > Params().AzzrEmissionsUpgrade()) {
         nSubsidy = 500 * COIN;
     }
 
@@ -5703,7 +5705,7 @@ int ActiveProtocol()
     // own ModifierUpgradeBlock()
 
     //if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
-	if (chainActive.Tip()->nTime > Params().StartMasternodePayments_V2()) {
+	if (chainActive.Tip()->nHeight > Params().AzzrEmissionsUpgrade()) {
 		return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
 	}
 

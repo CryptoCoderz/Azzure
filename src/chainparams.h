@@ -99,6 +99,7 @@ public:
 	/** Network Upgrade, changes MN/POS from 50/50 to 70/30 respectively, rewards are dropped to -
 		 500 AZZR per block and VRX difficulty replaces the previous DGW implementation */
 	int AzzrNetUpgrade() const { return nAzzrNetUpgrade; }
+	int AzzrEmissionsUpgrade() const { return nAzzrEmissionsUpgrade; }
 	int64_t StartMasternodePayments_V2() const { return nStartMasternodePayments_V2; }
 
 protected:
@@ -146,6 +147,7 @@ protected:
     int64_t nStartMasternodePayments;
 	int64_t nStartMasternodePayments_V2;
 	int nAzzrNetUpgrade;
+	int nAzzrEmissionsUpgrade;
 };
 
 /** 
